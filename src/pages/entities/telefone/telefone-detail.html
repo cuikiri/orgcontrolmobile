@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Telefone</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>Tipo Telefone</ion-label>
+            <div item-content>
+                <span>{{telefone.tipoTelefone}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Numero</ion-label>
+            <div item-content>
+                <span>{{telefone.numero}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>Pessoa</ion-label>
+            <div item-content *ngIf="telefone.pessoa">
+                <a>{{telefone.pessoa?.id}}</a>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>Unidade</ion-label>
+            <div item-content *ngIf="telefone.unidade">
+                <a>{{telefone.unidade?.id}}</a>
+            </div>
+        </ion-item>
+    </ion-list>
+
+    <button ion-button block (click)="open(telefone)">{{ 'EDIT_BUTTON' | translate }}</button>
+</ion-content>

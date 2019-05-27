@@ -1,0 +1,7 @@
+{
+  "name": "ongcontrolmobile",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

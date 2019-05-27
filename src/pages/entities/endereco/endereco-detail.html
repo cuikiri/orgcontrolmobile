@@ -1,0 +1,107 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Endereco</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>Tipo Residencia</ion-label>
+            <div item-content>
+                <span>{{endereco.tipoResidencia}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Tipo Endereco</ion-label>
+            <div item-content>
+                <span>{{endereco.tipoEndereco}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Tipo Logradouro</ion-label>
+            <div item-content>
+                <span>{{endereco.tipoLogradouro}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Nome</ion-label>
+            <div item-content>
+                <span>{{endereco.nome}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Numero</ion-label>
+            <div item-content>
+                <span>{{endereco.numero}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Bairro</ion-label>
+            <div item-content>
+                <span>{{endereco.bairro}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Tipo Bairoo</ion-label>
+            <div item-content>
+                <span>{{endereco.tipoBairoo}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Zona</ion-label>
+            <div item-content>
+                <span>{{endereco.zona}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Cep</ion-label>
+            <div item-content>
+                <span>{{endereco.cep}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Bloco</ion-label>
+            <div item-content>
+                <span>{{endereco.bloco}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Apto</ion-label>
+            <div item-content>
+                <span>{{endereco.apto}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Complemento</ion-label>
+            <div item-content>
+                <span>{{endereco.complemento}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Cidade</ion-label>
+            <div item-content>
+                <span>{{endereco.cidade}}</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>Estado</ion-label>
+            <div item-content *ngIf="endereco.estado">
+                <a>{{endereco.estado?.nome}}</a>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>Localizacao</ion-label>
+            <div item-content *ngIf="endereco.localizacao">
+                <a>{{endereco.localizacao?.id}}</a>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>Pessoa</ion-label>
+            <div item-content *ngIf="endereco.pessoa">
+                <a>{{endereco.pessoa?.id}}</a>
+            </div>
+        </ion-item>
+    </ion-list>
+
+    <button ion-button block (click)="open(endereco)">{{ 'EDIT_BUTTON' | translate }}</button>
+</ion-content>
