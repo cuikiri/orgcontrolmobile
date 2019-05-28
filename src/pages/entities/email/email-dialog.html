@@ -37,20 +37,6 @@
             <ion-item>
                 <ion-input type="text" placeholder="Descricao" formControlName="descricao"></ion-input>
             </ion-item>
-            <ion-item>
-                <ion-label>Pessoa</ion-label>
-                <ion-select id="field_pessoa" formControlName="pessoa" [compareWith]="comparePessoa">
-                    <ion-option [value]="null"></ion-option>
-                    <ion-option [value]="pessoaOption" *ngFor="let pessoaOption of pessoas; trackBy: trackPessoaById">{{pessoaOption.id}}</ion-option>
-                </ion-select>
-            </ion-item>
-            <ion-item>
-                <ion-label>Unidade</ion-label>
-                <ion-select id="field_unidade" formControlName="unidade" [compareWith]="compareUnidade">
-                    <ion-option [value]="null"></ion-option>
-                    <ion-option [value]="unidadeOption" *ngFor="let unidadeOption of unidades; trackBy: trackUnidadeById">{{unidadeOption.id}}</ion-option>
-                </ion-select>
-            </ion-item>
         </ion-list>
     </form>
 </ion-content>

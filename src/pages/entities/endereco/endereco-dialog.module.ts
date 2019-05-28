@@ -1,7 +1,4 @@
 import { UfService } from '../uf';
-import { LocalizacaoService } from '../localizacao';
-import { UnidadeService } from '../unidade';
-import { PessoaService } from '../pessoa';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicPageModule } from 'ionic-angular';
@@ -22,9 +19,6 @@ import { EnderecoService } from './endereco.provider';
     providers: [
         EnderecoService,
         UfService,
-        LocalizacaoService,
-        UnidadeService,
-        PessoaService,
     ]
 })
 export class EnderecoDialogPageModule {

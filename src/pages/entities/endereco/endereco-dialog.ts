@@ -3,10 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
 import { Endereco } from './endereco.model';
 import { EnderecoService } from './endereco.provider';
-import { Uf, UfService } from '../uf';
-import { Localizacao, LocalizacaoService } from '../localizacao';
-import { Unidade, UnidadeService } from '../unidade';
-import { Pessoa, PessoaService } from '../pessoa';
+import { UfService } from '../uf/uf.service';
+import { Uf } from '../uf/uf.model';
 
 @IonicPage()
 @Component({
@@ -17,9 +15,6 @@ export class EnderecoDialogPage {
 
     endereco: Endereco;
     estados: Uf[];
-    localizacaos: Localizacao[];
-    unidades: Unidade[];
-    pessoas: Pessoa[];
     isReadyToSave: boolean;
 
     form: FormGroup;
@@ -27,9 +22,6 @@ export class EnderecoDialogPage {
     constructor(public navCtrl: NavController, public viewCtrl: ViewController, public toastCtrl: ToastController,
                 formBuilder: FormBuilder, params: NavParams,
                 private ufService: UfService,
-                private localizacaoService: LocalizacaoService,
-                private unidadeService: UnidadeService,
-                private pessoaService: PessoaService,
                 private enderecoService: EnderecoService) {
         this.endereco = params.get('item');
         if (this.endereco && this.endereco.id) {
@@ -56,9 +48,6 @@ export class EnderecoDialogPage {
             complemento: [params.get('item') ? this.endereco.complemento : '', ],
             cidade: [params.get('item') ? this.endereco.cidade : '', ],
             uf: [params.get('item') ? this.endereco.uf : '',],
-            localizacao: [params.get('item') ? this.endereco.localizacao : '',],
-            unidade: [params.get('item') ? this.endereco.unidade : '',],
-            pessoa: [params.get('item') ? this.endereco.pessoa : '',],
         });
 
         // Watch the form for changes, and
@@ -72,33 +61,16 @@ export class EnderecoDialogPage {
         this.ufService
             .query({filter: 'endereco-is-null'})
             .subscribe(data => {
-                if (!this.endereco.estado || !this.endereco.estado.id) {
+                if (!this.endereco.uf || !this.endereco.uf.id) {
                     this.estados = data;
                 } else {
                     this.ufService
-                        .find(this.endereco.estado.id)
+                        .find(this.endereco.uf.id)
                         .subscribe((subData: Uf) => {
                             this.estados = [subData].concat(subData);
                         }, (error) => this.onError(error));
                 }
             }, (error) => this.onError(error));
-        this.localizacaoService
-            .query({filter: 'endereco-is-null'})
-            .subscribe(data => {
-                if (!this.endereco.localizacao || !this.endereco.localizacao.id) {
-                    this.localizacaos = data;
-                } else {
-                    this.localizacaoService
-                        .find(this.endereco.localizacao.id)
-                        .subscribe((subData: Localizacao) => {
-                            this.localizacaos = [subData].concat(subData);
-                        }, (error) => this.onError(error));
-                }
-            }, (error) => this.onError(error));
-        this.unidadeService.query()
-            .subscribe(data => { this.unidades = data; }, (error) => this.onError(error));
-        this.pessoaService.query()
-            .subscribe(data => { this.pessoas = data; }, (error) => this.onError(error));
     }
 
     /**
@@ -128,27 +100,6 @@ export class EnderecoDialogPage {
     }
 
     trackUfById(index: number, item: Uf) {
-        return item.id;
-    }
-    compareLocalizacao(first: Localizacao, second: Localizacao): boolean {
-        return first && second ? first.id === second.id : first === second;
-    }
-
-    trackLocalizacaoById(index: number, item: Localizacao) {
-        return item.id;
-    }
-    compareUnidade(first: Unidade, second: Unidade): boolean {
-        return first && second ? first.id === second.id : first === second;
-    }
-
-    trackUnidadeById(index: number, item: Unidade) {
-        return item.id;
-    }
-    comparePessoa(first: Pessoa, second: Pessoa): boolean {
-        return first && second ? first.id === second.id : first === second;
-    }
-
-    trackPessoaById(index: number, item: Pessoa) {
         return item.id;
     }
 }

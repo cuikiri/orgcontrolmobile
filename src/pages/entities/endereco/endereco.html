@@ -17,24 +17,10 @@
     <ion-list>
         <ion-item-sliding *ngFor="let endereco of enderecos; trackBy: trackId" #slidingItem>
             <button ion-item (click)="detail(endereco)">
-                <!-- todo: special handling for translating enum - {{'TipoResidencia.' + endereco.tipoResidencia}}" -->
-                <p>{{endereco.tipoResidencia}}</p>
-                <!-- todo: special handling for translating enum - {{'EnderecoTipo.' + endereco.tipoEndereco}}" -->
-                <p>{{endereco.tipoEndereco}}</p>
-                <!-- todo: special handling for translating enum - {{'TipoLogradouro.' + endereco.tipoLogradouro}}" -->
                 <p>{{endereco.tipoLogradouro}}</p>
                 <p>{{endereco.nome}}</p>
                 <p>{{endereco.numero}}</p>
                 <p>{{endereco.bairro}}</p>
-                <!-- todo: special handling for translating enum - {{'TipoBairro.' + endereco.tipoBairoo}}" -->
-                <p>{{endereco.tipoBairoo}}</p>
-                <!-- todo: special handling for translating enum - {{'Regiao.' + endereco.zona}}" -->
-                <p>{{endereco.zona}}</p>
-                <p>{{endereco.cep}}</p>
-                <p>{{endereco.bloco}}</p>
-                <p>{{endereco.apto}}</p>
-                <p>{{endereco.complemento}}</p>
-                <p>{{endereco.cidade}}</p>
             </button>
             <ion-item-options>
                 <button ion-button color="primary" (click)="open(slidingItem, endereco)">

@@ -17,18 +17,6 @@
                 <span>{{email.descricao}}</span>
             </div>
         </ion-item>
-        <ion-item>
-            <ion-label>Pessoa</ion-label>
-            <div item-content *ngIf="email.pessoa">
-                <a>{{email.pessoa?.id}}</a>
-            </div>
-        </ion-item>
-        <ion-item>
-            <ion-label>Unidade</ion-label>
-            <div item-content *ngIf="email.unidade">
-                <a>{{email.unidade?.id}}</a>
-            </div>
-        </ion-item>
     </ion-list>
 
     <button ion-button block (click)="open(email)">{{ 'EDIT_BUTTON' | translate }}</button>

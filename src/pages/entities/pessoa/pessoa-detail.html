@@ -19,12 +19,6 @@
                 </span>
             </div>
         </ion-item>
-        <ion-item>
-            <ion-label>Aluno Irmao</ion-label>
-            <div item-content *ngIf="pessoa.alunoIrmao">
-                <a>{{pessoa.alunoIrmao?.id}}</a>
-            </div>
-        </ion-item>
     </ion-list>
 
     <button ion-button block (click)="open(pessoa)">{{ 'EDIT_BUTTON' | translate }}</button>

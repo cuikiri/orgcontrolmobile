@@ -89,18 +89,6 @@
                 <a>{{endereco.estado?.nome}}</a>
             </div>
         </ion-item>
-        <ion-item>
-            <ion-label>Localizacao</ion-label>
-            <div item-content *ngIf="endereco.localizacao">
-                <a>{{endereco.localizacao?.id}}</a>
-            </div>
-        </ion-item>
-        <ion-item>
-            <ion-label>Pessoa</ion-label>
-            <div item-content *ngIf="endereco.pessoa">
-                <a>{{endereco.pessoa?.id}}</a>
-            </div>
-        </ion-item>
     </ion-list>
 
     <button ion-button block (click)="open(endereco)">{{ 'EDIT_BUTTON' | translate }}</button>

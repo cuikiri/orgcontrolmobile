@@ -35,13 +35,6 @@
                     <ion-option [value]="avisoOption" *ngFor="let avisoOption of avisos; trackBy: trackAvisoById">{{avisoOption.id}}</ion-option>
                 </ion-select>
             </ion-item>
-            <ion-item>
-                <ion-label>Aluno Irmao</ion-label>
-                <ion-select id="field_alunoIrmao" formControlName="alunoIrmao" [compareWith]="compareAluno">
-                    <ion-option [value]="null"></ion-option>
-                    <ion-option [value]="alunoOption" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.id}}</ion-option>
-                </ion-select>
-            </ion-item>
         </ion-list>
     </form>
 </ion-content>

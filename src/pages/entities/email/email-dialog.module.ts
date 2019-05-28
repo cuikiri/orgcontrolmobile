@@ -1,5 +1,3 @@
-import { PessoaService } from '../pessoa';
-import { UnidadeService } from '../unidade';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicPageModule } from 'ionic-angular';
@@ -18,9 +16,7 @@ import { EmailService } from './email.provider';
         EmailDialogPage
     ],
     providers: [
-        EmailService,
-        PessoaService,
-        UnidadeService,
+        EmailService
     ]
 })
 export class EmailDialogPageModule {

@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
 import { Telefone } from './telefone.model';
 import { TelefoneService } from './telefone.provider';
-import { Pessoa, PessoaService } from '../pessoa';
-import { Unidade, UnidadeService } from '../unidade';
 
 @IonicPage()
 @Component({
@@ -14,16 +12,12 @@ import { Unidade, UnidadeService } from '../unidade';
 export class TelefoneDialogPage {
 
     telefone: Telefone;
-    pessoas: Pessoa[];
-    unidades: Unidade[];
     isReadyToSave: boolean;
 
     form: FormGroup;
 
     constructor(public navCtrl: NavController, public viewCtrl: ViewController, public toastCtrl: ToastController,
                 formBuilder: FormBuilder, params: NavParams,
-                private pessoaService: PessoaService,
-                private unidadeService: UnidadeService,
                 private telefoneService: TelefoneService) {
         this.telefone = params.get('item');
         if (this.telefone && this.telefone.id) {
@@ -39,7 +33,6 @@ export class TelefoneDialogPage {
             tipoTelefone: [params.get('item') ? this.telefone.tipoTelefone : '',  Validators.required],
             numero: [params.get('item') ? this.telefone.numero : '',  Validators.required],
             pessoa: [params.get('item') ? this.telefone.pessoa : '',],
-            unidade: [params.get('item') ? this.telefone.unidade : '',],
         });
 
         // Watch the form for changes, and
@@ -50,10 +43,6 @@ export class TelefoneDialogPage {
     }
 
     ionViewDidLoad() {
-        this.pessoaService.query()
-            .subscribe(data => { this.pessoas = data; }, (error) => this.onError(error));
-        this.unidadeService.query()
-            .subscribe(data => { this.unidades = data; }, (error) => this.onError(error));
     }
 
     /**
@@ -76,20 +65,5 @@ export class TelefoneDialogPage {
         console.error(error);
         let toast = this.toastCtrl.create({message: 'Failed to load data', duration: 2000, position: 'middle'});
         toast.present();
-    }
-
-    comparePessoa(first: Pessoa, second: Pessoa): boolean {
-        return first && second ? first.id === second.id : first === second;
-    }
-
-    trackPessoaById(index: number, item: Pessoa) {
-        return item.id;
-    }
-    compareUnidade(first: Unidade, second: Unidade): boolean {
-        return first && second ? first.id === second.id : first === second;
-    }
-
-    trackUnidadeById(index: number, item: Unidade) {
-        return item.id;
     }
 }

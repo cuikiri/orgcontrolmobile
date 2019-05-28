@@ -1,5 +1,3 @@
-import { PessoaService } from '../pessoa';
-import { UnidadeService } from '../unidade';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicPageModule } from 'ionic-angular';
@@ -19,8 +17,6 @@ import { TelefoneService } from './telefone.provider';
     ],
     providers: [
         TelefoneService,
-        PessoaService,
-        UnidadeService,
     ]
 })
 export class TelefoneDialogPageModule {

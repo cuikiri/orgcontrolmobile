@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
 import { Email } from './email.model';
 import { EmailService } from './email.provider';
-import { Pessoa, PessoaService } from '../pessoa';
-import { Unidade, UnidadeService } from '../unidade';
 
 @IonicPage()
 @Component({
@@ -14,16 +12,12 @@ import { Unidade, UnidadeService } from '../unidade';
 export class EmailDialogPage {
 
     email: Email;
-    pessoas: Pessoa[];
-    unidades: Unidade[];
     isReadyToSave: boolean;
 
     form: FormGroup;
 
     constructor(public navCtrl: NavController, public viewCtrl: ViewController, public toastCtrl: ToastController,
                 formBuilder: FormBuilder, params: NavParams,
-                private pessoaService: PessoaService,
-                private unidadeService: UnidadeService,
                 private emailService: EmailService) {
         this.email = params.get('item');
         if (this.email && this.email.id) {
@@ -38,8 +32,6 @@ export class EmailDialogPage {
             id: [params.get('item') ? this.email.id : null],
             tipoEmail: [params.get('item') ? this.email.tipoEmail : '',  Validators.required],
             descricao: [params.get('item') ? this.email.descricao : '',  Validators.required],
-            pessoa: [params.get('item') ? this.email.pessoa : '',],
-            unidade: [params.get('item') ? this.email.unidade : '',],
         });
 
         // Watch the form for changes, and
@@ -50,10 +42,7 @@ export class EmailDialogPage {
     }
 
     ionViewDidLoad() {
-        this.pessoaService.query()
-            .subscribe(data => { this.pessoas = data; }, (error) => this.onError(error));
-        this.unidadeService.query()
-            .subscribe(data => { this.unidades = data; }, (error) => this.onError(error));
+
     }
 
     /**
@@ -78,18 +67,4 @@ export class EmailDialogPage {
         toast.present();
     }
 
-    comparePessoa(first: Pessoa, second: Pessoa): boolean {
-        return first && second ? first.id === second.id : first === second;
-    }
-
-    trackPessoaById(index: number, item: Pessoa) {
-        return item.id;
-    }
-    compareUnidade(first: Unidade, second: Unidade): boolean {
-        return first && second ? first.id === second.id : first === second;
-    }
-
-    trackUnidadeById(index: number, item: Unidade) {
-        return item.id;
-    }
 }

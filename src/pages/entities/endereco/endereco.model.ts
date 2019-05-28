@@ -53,7 +53,7 @@ export class Endereco implements BaseEntity {
         public apto?: string,
         public complemento?: string,
         public cidade?: string,
-        public estado?: BaseEntity,
+        public uf?: BaseEntity,
         public localizacao?: BaseEntity,
         public unidade?: BaseEntity,
         public pessoa?: BaseEntity,
