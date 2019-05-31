@@ -72,5 +72,14 @@
   "CARDS_TITLE": "Social",
 
   "SEARCH_TITLE": "Search",
-  "SEARCH_PLACEHOLDER": "Search the items list, e.g. \"Donald Duck\""
+  "SEARCH_PLACEHOLDER": "Search the items list, e.g. \"Donald Duck\"",
+  
+  "DADOS_PESSOA_BUTTON": "Pessoal Data",
+  "ENDERECO_PESSOA_BUTTON": "Adress",
+  "TELEFONE_PESSOA_BUTTON": "Telphone",
+  "EMAIL_PESSOA_BUTTON": "Email",
+  "DOCUMENTO_PESSOA_BUTTON": "Document",
+  "MATRICULA_PESSOA_BUTTON": "Matricula",
+  "CLEAR_IMAGE_BUTTON": "Clear Image",
+  "OPEN_IMAGE_BUTTON": "Open Image"
 }

@@ -6,40 +6,55 @@
 
 </ion-header>
 
-<ion-content>
-
-  <form [formGroup]="form" *ngIf="settingsReady">
-    <ion-list *ngIf="page == 'main'">
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION1' | translate }}</ion-label>
-        <ion-toggle formControlName="option1"></ion-toggle>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION2' | translate }}</ion-label>
-        <ion-input formControlName="option2"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION3' | translate }}</ion-label>
-        <ion-select formControlName="option3">
-          <ion-option value="1" checked="true">1</ion-option>
-          <ion-option value="2">2</ion-option>
-          <ion-option value="3">3</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <button ion-item [navPush]="subSettings" [navParams]="profileSettings">
-        {{ 'SETTINGS_PROFILE_BUTTON' | translate }}
-      </button>
+<ion-content padding>
+    <ion-list *ngIf="settingsAccount">
+		<ion-item>
+			<ion-label fixed>ID</ion-label>
+			<div item-content>
+                <span>{{settingsAccount.id}}</span>
+            </div>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>Login</ion-label>
+			<div item-content>
+                <span>{{settingsAccount.login}}</span>
+            </div>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>Primeiro Nome</ion-label>
+			<div item-content>
+                <span>{{settingsAccount.firstName}}</span>
+            </div>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>Último Nome</ion-label>
+			<div item-content>
+                <span>{{settingsAccount.lastName}}</span>
+            </div>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>Email</ion-label>
+			<div item-content>
+                <span>{{settingsAccount.email}}</span>
+            </div>
+		</ion-item>
+		<ion-item *ngIf="fotoUser">
+			<ion-label fixed>Foto</ion-label>
+			<div item-content *ngIf="fotoUser">
+				<img src="{{fotoUser}}" style="max-height: 300px;"/>
+            </div>
+		</ion-item>
+		
+		<ion-buttons>
+			<button ion-button block (click)="open(settingsAccount)">{{ 'EDIT_BUTTON' | translate }}</button>
+			<div *ngIf="pessoa">
+				<button ion-button block (click)="open(settingsAccount)">{{ 'DADOS_PESSOA_BUTTON' | translate }}</button>
+				<button ion-button block (click)="open(settingsAccount)">{{ 'ENDERECO_PESSOA_BUTTON' | translate }}</button>
+				<button ion-button block (click)="open(settingsAccount)">{{ 'TELEFONE_PESSOA_BUTTON' | translate }}</button>
+				<button ion-button block (click)="open(settingsAccount)">{{ 'EMAIL_PESSOA_BUTTON' | translate }}</button>
+				<button ion-button block (click)="open(settingsAccount)">{{ 'DOCUMENTO_PESSOA_BUTTON' | translate }}</button>
+				<button ion-button block (click)="open(settingsAccount)">{{ 'MATRICULA_PESSOA_BUTTON' | translate }}</button>
+			</div>	
+		</ion-buttons>
     </ion-list>
-
-    <ion-list *ngIf="page == 'profile'">
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION4' | translate }}</ion-label>
-        <ion-input formControlName="option4"></ion-input>
-      </ion-item>
-    </ion-list>
-  </form>
-
 </ion-content>
