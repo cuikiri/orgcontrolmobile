@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, ModalController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, ModalController, NavParams, ToastController, NavController } from 'ionic-angular';
 
 import { Principal } from '../../providers/auth/principal.service';
 
-import { FotoUser } from './foto-user.model';
+//import { FotoUser } from './foto-user.model';
 
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -17,7 +17,7 @@ import { FotoUser } from './foto-user.model';
   selector: 'page-settings',
   templateUrl: 'settings.html'
 })
-export class SettingsPage implements OnInit {
+export class SettingsPage {
   // Our local settings object
   settingsAccount: any;
   settingsReady = true;
@@ -32,6 +32,7 @@ export class SettingsPage implements OnInit {
     public navParams: NavParams,
     private principal: Principal,
 	public toastCtrl: ToastController,
+	private navCtrl: NavController,
     public translate: TranslateService) {
         //this.languageHelper.getAll().then(languages => {
         //    this.languages = languages;
@@ -52,20 +53,20 @@ export class SettingsPage implements OnInit {
   
   copyAccount(account) {
         return {
-			id: account.id,
-            activated: account.activated,
-            email: account.email,
-            firstName: account.firstName,
-            langKey: account.langKey,
-            lastName: account.lastName,
-            login: account.login,
-            imageUrl: account.imageUrl,
-            foto: account.foto,
-            pessoa: account.pessoa
+			id: account ? account.id : null,
+            activated: account ? account.activated : null,
+            email: account ? account.email : null,
+            firstName: account ? account.firstName : null,
+            langKey: account ? account.langKey : null,
+            lastName: account ? account.lastName : null,
+            login: account ? account.login : null,
+            imageUrl: account ? account.imageUrl : null,
+            foto: account ? account.foto : null,
+            pessoa: account ? account.pessoa : null
         };
     }
 	
-	open(item) {
+	openSettingsDialogPage(item) {
         let modal = this.modalCtrl.create('SettingsDialogPage', {item: item});
         modal.onDidDismiss(item => {
             if (item) {
@@ -80,5 +81,9 @@ export class SettingsPage implements OnInit {
             }
         });
         modal.present();
+    }
+	
+	openPessoaDialogPage(item) {
+		this.navCtrl.push('PessoaDetailPage', {id: item.id});
     }
 }

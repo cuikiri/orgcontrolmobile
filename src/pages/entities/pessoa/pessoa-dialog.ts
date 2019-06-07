@@ -15,7 +15,7 @@ import { ResponsavelService } from '../responsavel/responsavel.service';
 })
 export class PessoaDialogPage {
 
-    pessoa: Pessoa;
+    pessoa: any;
     avisos: Aviso[];
     responsavels: Responsavel[];
     isReadyToSave: boolean;

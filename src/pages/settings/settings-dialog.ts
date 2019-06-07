@@ -77,7 +77,7 @@ export class SettingsDialogPage {
     }
 	
 	takePicture() {
-		this.photo = '';
+		this.fotoUser = '';
 		alert("p0");
 		const options: CameraOptions = {
 		  quality: 100,
@@ -92,7 +92,7 @@ export class SettingsDialogPage {
 		this.camera.getPicture(options)
 		  .then((imageData) => {
 			let base64image = 'data:image/jpeg;base64,' + imageData;
-			this.photo = base64image;
+			this.fotoUser = base64image;
 	 
 		  }, (error) => {
 			console.error(error);

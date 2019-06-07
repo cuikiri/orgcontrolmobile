@@ -46,12 +46,12 @@
 		</ion-item>
 		
 		<ion-buttons>
-			<button ion-button block (click)="open(settingsAccount)">{{ 'EDIT_BUTTON' | translate }}</button>
+			<button ion-button block (click)="openSettingsDialogPage(settingsAccount)">{{ 'EDIT_BUTTON' | translate }}</button>
 			<div *ngIf="pessoa">
-				<button ion-button block (click)="open(settingsAccount)">{{ 'DADOS_PESSOA_BUTTON' | translate }}</button>
-				<button ion-button block (click)="open(settingsAccount)">{{ 'ENDERECO_PESSOA_BUTTON' | translate }}</button>
-				<button ion-button block (click)="open(settingsAccount)">{{ 'TELEFONE_PESSOA_BUTTON' | translate }}</button>
-				<button ion-button block (click)="open(settingsAccount)">{{ 'EMAIL_PESSOA_BUTTON' | translate }}</button>
+				<button ion-button block (click)="openPessoaDialogPage(settingsAccount)">{{ 'DADOS_PESSOA_BUTTON' | translate }}</button>
+				<button ion-button block (click)="open(settingsAccount, EnderecoPage)">{{ 'ENDERECO_PESSOA_BUTTON' | translate }}</button>
+				<button ion-button block (click)="open(settingsAccount, TelefonePage)">{{ 'TELEFONE_PESSOA_BUTTON' | translate }}</button>
+				<button ion-button block (click)="open(settingsAccount, EmailPage)">{{ 'EMAIL_PESSOA_BUTTON' | translate }}</button>
 				<button ion-button block (click)="open(settingsAccount)">{{ 'DOCUMENTO_PESSOA_BUTTON' | translate }}</button>
 				<button ion-button block (click)="open(settingsAccount)">{{ 'MATRICULA_PESSOA_BUTTON' | translate }}</button>
 			</div>	
